@@ -1,0 +1,7 @@
+openai==1.6.1
+pandas==2.1.4
+tenacity==8.2.3
+tiktoken==0.5.2
+tqdm==4.66.1
+requests==2.31.0
+python-dotenv==1.0.0
