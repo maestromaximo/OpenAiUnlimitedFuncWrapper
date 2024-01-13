@@ -231,7 +231,7 @@ def extract_json_from_string(input_string):
 
     return None
 
-def create_json_agent(message):
+def create_json_autoagent(message):
     """
     Creates a JSON agent that generates JSON schemas for functions based on user input.
 
@@ -285,9 +285,67 @@ def create_json_agent(message):
     # print(cleaned_json)
     return cleaned_json
 
+def create_function_json_manual():
+    """
+    Interactively prompts the user to create a JSON schema for a new function. 
+    This includes the function's name, description, parameters, and parameter types.
+
+    Returns:
+    - dict: A dictionary representing the JSON schema of the newly created function.
+    """
+    function = {}
+    
+    function['name'] = input("Enter the function name: ")
+    function['description'] = input("Enter the function description: ")
+
+    # Defining parameter types that can be chosen
+    available_types = ['string', 'integer', 'boolean']
+
+    parameters = {
+        "type": "object",
+        "properties": {},
+        "required": []
+    }
+
+    while True:
+        param_name = input("Enter parameter name (or press enter to finish): ")
+        if not param_name:
+            break
+
+        param_type = ""
+        while param_type not in available_types:
+            param_type = input(f"Enter parameter type ({'/'.join(available_types)}): ")
+
+        param_desc = input("Enter parameter description: ")
+
+        parameters['properties'][param_name] = {
+            "type": param_type,
+            "description": param_desc
+        }
+
+        if input("Is this parameter required? (yes/no): ").lower() == 'yes':
+            parameters['required'].append(param_name)
+
+    function['parameters'] = parameters
+
+    # Printing the function JSON
+    print("\nGenerated Function JSON:")
+    print(json.dumps(function, indent=4))
+
 
 @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
-def single_turn_pseudofunction(testing_prompt:str, function:str,model="gpt-4-1106-preview" ):
+def single_turn_pseudofunction(testing_prompt:str, function:str, model="gpt-4-1106-preview" ):
+    """
+    Executes a single turn pseudofunction using the OpenAI Chat API.
+
+    Args:
+        testing_prompt (str): The user's input or prompt for the conversation.
+        function (str): The function to be called as a pseudofunction, doesnt need to exist, its pourpose is to force gpt to respond given the parameters of the function.
+        model (str, optional): The model to use for the conversation. Defaults to "gpt-4-1106-preview".
+
+    Returns:
+        dict or None: The arguments of the function call if successful {arg: value,...}, None otherwise.
+    """
     api_key = os.getenv("OPENAI_API_KEY")
     headers = {
         "Content-Type": "application/json",
@@ -316,7 +374,7 @@ def single_turn_pseudofunction(testing_prompt:str, function:str,model="gpt-4-110
             function_name = tool_call['name']
             function_args = json.loads(tool_call['arguments'])
             
-            print(function_args)
+            # print(function_args)
             return function_args
         else:
             return None
@@ -325,5 +383,35 @@ def single_turn_pseudofunction(testing_prompt:str, function:str,model="gpt-4-110
         print(f"Error during conversation: {e}")
         return None
     
+#testing func
+# func = {
+#     "name": "calculate_sum",
+#     "description": "This function calculates the sum of two numbers and returns the result.",
+#     "parameters": {
+#         "type": "object",
+#         "properties": {
+#             "number1": {
+#                 "type": "number",
+#                 "description": "The first number to be added."
+#             },
+#             "number2": {
+#                 "type": "number",
+#                 "description": "The second number to be added."
+#             }
+#         },
+#         "required": [
+#             "number1",
+#             "number2"
+#         ]
+#     },
+#     "return": {
+#         "type": "number",
+#         "description": "The result of adding number1 and number2 together."
+#     }
+# } 
 
-print(create_json_agent('create a function that would return the sum of two numbers'))
+# print(create_json_agent('create a function that would return the sum of two numbers'))
+
+# print(single_turn_pseudofunction('add two numbers that would sum to 10', func))
+##testing func end
+
