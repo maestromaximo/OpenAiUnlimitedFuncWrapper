@@ -153,5 +153,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - If you want to run a new pip build make sure to actiavte an enviroment, run pip install -r requirement.txt
 - Then be sure to run ```Remove-Item -Recurse -Force build, dist, *.egg-info``` if you had run a build before, else it would return an error
 - Then run python ```setup.py sdist bdist_wheel```
-- If wanted you can then run a pip of the wheel file path ".whl" under the dist folder that was just created 
+- If wanted you can then run a pip of the wheel file path ".whl" under the dist folder that was just created
+
+## Star History
+- If you liked the project star it to help it reach other people :)
+- More people = more possible features, lets grow together
+<a href="https://star-history.com/#maestromaximo/OpenAiUnlimitedFuncWrapper&Timeline">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=maestromaximo/OpenAiUnlimitedFuncWrapper&type=Timeline&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=maestromaximo/OpenAiUnlimitedFuncWrapper&type=Timeline" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=maestromaximo/OpenAiUnlimitedFuncWrapper&type=Timeline" />
+  </picture>
+</a>
+
 
