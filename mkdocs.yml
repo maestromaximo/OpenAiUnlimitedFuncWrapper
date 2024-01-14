@@ -1,0 +1,5 @@
+# mkdocs.yml
+site_name: Your Project's Documentation
+nav:
+  - Home: index.md
+  - About: about.md
