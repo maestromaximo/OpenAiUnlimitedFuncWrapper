@@ -1,5 +1,7 @@
 venv/
 .env
+pckTest/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
