@@ -140,3 +140,11 @@ Contributions are welcome! Please feel free to submit pull requests, report bugs
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+#### Build
+
+- If you want to run a new pip build make sure to actiavte an enviroment, run pip install -r requirement.txt
+- Then be sure to run ```Remove-Item -Recurse -Force build, dist, *.egg-info``` if you had run a build before, else it would return an error
+- Then run python ```setup.py sdist bdist_wheel```
+- If wanted you can then run a pip of the wheel file path ".whl" under the dist folder that was just created 
+
