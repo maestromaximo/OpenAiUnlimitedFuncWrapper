@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='openaiunlimitedfuncwrapper',
+    name='openaiunlimitedfun',
     version='0.1.0',  # Update the version number for new releases
     author='Alejandro Garcia Polo',  # Replace with your name or organization name
     author_email='alejandrogarcia2423@hotmail.com',  # Replace with your email
@@ -50,8 +50,11 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
     python_requires='>=3.6',  # Minimum version requirement of the package
-    keywords='openai, api, wrapper, function_calling, vectors, phseudo_func',  # Short description of your package
+    keywords='openai, api, wrapper, function_calling, vectors, pseudo_func',  # Short description of your package
     # You can also include entry_points to define command-line scripts, etc.
 )
