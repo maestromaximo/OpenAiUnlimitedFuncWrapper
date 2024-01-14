@@ -1,5 +1,7 @@
 ![PyPI](https://img.shields.io/pypi/v/your-package-name.svg)
 ![License](https://img.shields.io/github/license/maestromaximo/OpenAiUnlimitedFuncWrapper.svg)
+[![Documentation Status](https://readthedocs.org/projects/OpenAiUnlimitedFuncWrapper/badge/?version=latest)](https://OpenAiUnlimitedFuncWrapper.readthedocs.io/en/latest/?badge=latest)
+
 # OpenAI Unlimited Function Wrapper
 
 The `openaiunlimitedfuncwrapper` is a Python package that simplifies interaction with the OpenAI API, providing easy access to various models of GPT, including conversational capabilities, dynamic function calling, and pseudo-function execution to elicit specific responses based on parameter modification.
