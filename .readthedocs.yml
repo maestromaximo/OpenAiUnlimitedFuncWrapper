@@ -4,12 +4,6 @@ version: 2
 mkdocs:
   configuration: mkdocs.yml
 
-# Build formats: html, pdf, epub
-formats:
-  - html
-  - pdf
-  - epub
-
 python:
   version: 3.7
   install:
