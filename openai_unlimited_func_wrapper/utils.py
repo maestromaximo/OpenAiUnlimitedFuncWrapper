@@ -13,6 +13,40 @@ import openai
 # Load environment variables from .env file
 load_dotenv()
 
+def set_openai_api_key(api_key):
+    """
+    Sets the OPENAI_API_KEY in a .env file. Creates the file if it doesn't exist,
+    or appends to it if it does.
+
+    Args:
+        api_key (str): The OpenAI API key to set.
+    """
+    env_file = '.env'
+    api_key_entry = f'OPENAI_API_KEY={api_key}\n'
+
+    if os.path.exists(env_file):
+        # Check if OPENAI_API_KEY is already in the file
+        with open(env_file, 'r+') as file:
+            lines = file.readlines()
+            file.seek(0)
+            key_exists = False
+            for line in lines:
+                # Update the existing API key
+                if line.startswith('OPENAI_API_KEY'):
+                    file.write(api_key_entry)
+                    key_exists = True
+                else:
+                    file.write(line)
+            if not key_exists:
+                # Append the API key if it's not in the file
+                file.write(api_key_entry)
+            file.truncate()  # Remove any trailing lines that were in the original file
+    else:
+        # Create .env file and write the API key
+        with open(env_file, 'w') as file:
+            file.write(api_key_entry)
+
+    print("API key set in .env file.")
 
 def manage_available_functions(retrieve=True, function_location=None):
     """
