@@ -61,6 +61,9 @@ manage_function_list(function_to_add='your_function_name')
 function_list = manage_function_list(retrieve=True)
 ```
 
+###
+ - After running the above, ```chat_context_function_bank``` will have the functions availible to run
+
 ## Generating JSON Schemas for Functions
 
 You can create JSON schemas for your functions automatically or manually. This can be used to generate function descriptions for use within the wrapper.
