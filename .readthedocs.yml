@@ -1,16 +1,9 @@
 # .readthedocs.yml
-# Read the Docs configuration file
-# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
-
 version: 2
-
-# MkDocs configuration.
-# The configuration for MkDocs must be in a 'mkdocs.yml' at the root of the repository.
 mkdocs:
-  configuration: mkdocs.yml  # Path to MkDocs configuration file
-
-# Optionally set the Python version and requirements
+  configuration: mkdocs.yml
+formats: all
 python:
-  version: 3.8
+  version: 3.7
   install:
-    - requirements: docs/requirements.txt  # Path to requirements file
+    - requirements: requirements.txt
