@@ -5,7 +5,7 @@ setup(
     version='0.1.0',  # Update the version number for new releases
     author='Alejandro Garcia Polo',  # Replace with your name or organization name
     author_email='alejandrogarcia2423@hotmail.com',  # Replace with your email
-    description='A wrapper for OpenAI API gpt with the ability to have unlimited function calling or phseudo functions',  # Short description of your project
+    description='A comprehensive wrapper for the OpenAI API, facilitating seamless interaction with GPT models. Features include conversation management, dynamic function execution, and tools for creating JSON schemas for function descriptions. Simplifies setting API keys and managing chat contexts for enhanced GPT-based applications.',  # Short description of your project
     long_description=open('README.md').read(),  # Long description read from the the readme file
     long_description_content_type='text/markdown',  # Type of long_description, e.g., markdown or rst
     url='https://github.com/maestromaximo/OpenAiUnlimitedFuncWrapper',  # Replace with the URL to your project
