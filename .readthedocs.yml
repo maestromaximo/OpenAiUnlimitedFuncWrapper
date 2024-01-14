@@ -4,8 +4,9 @@ version: 2
 mkdocs:
   configuration: mkdocs.yml
 
-# Specify only the default format
-formats: html
+# Specify output formats
+formats:
+  - html
 
 python:
   version: 3.7
