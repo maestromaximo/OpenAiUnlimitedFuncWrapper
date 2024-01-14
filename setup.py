@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='openaiunlimitedfun',
-    version='0.1.0',  # Update the version number for new releases
+    version='0.1.1',  # Update the version number for new releases
     author='Alejandro Garcia Polo',  # Replace with your name or organization name
     author_email='alejandrogarcia2423@hotmail.com',  # Replace with your email
     description='A comprehensive wrapper for the OpenAI API, facilitating seamless interaction with GPT models. Features include conversation management, dynamic function execution, and tools for creating JSON schemas for function descriptions. Simplifies setting API keys and managing chat contexts for enhanced GPT-based applications.',  # Short description of your project
