@@ -3,30 +3,37 @@ import os
 import json
 import requests
 from tenacity import retry, stop_after_attempt, wait_random_exponential
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import pickle
 import inspect
 import sys
 import importlib.util
 import openai
-
+from pathlib import Path
 # Load environment variables from .env file
-load_dotenv()
+# env_path = Path('.') / '.env'
+# load_dotenv(dotenv_path=env_path)
+load_dotenv(find_dotenv())
 
-def set_openai_api_key(api_key):
+def set_openai_api_key(api_key, env_file_path=None):
     """
     Sets the OPENAI_API_KEY in a .env file. Creates the file if it doesn't exist,
-    or appends to it if it does.
+    or appends to it if it does. Optionally, a path to a .env file can be provided.
 
     Args:
         api_key (str): The OpenAI API key to set.
+        env_file_path (str, optional): The path to the .env file.
     """
-    env_file = '.env'
+    if env_file_path is None:
+        # If no specific path provided, try to find the .env file
+        env_file_path = find_dotenv() if find_dotenv() else '.env'
+    
+    env_path = Path(env_file_path)
     api_key_entry = f'OPENAI_API_KEY={api_key}\n'
 
-    if os.path.exists(env_file):
+    if env_path.exists():
         # Check if OPENAI_API_KEY is already in the file
-        with open(env_file, 'r+') as file:
+        with env_path.open('r+') as file:
             lines = file.readlines()
             file.seek(0)
             key_exists = False
@@ -43,10 +50,10 @@ def set_openai_api_key(api_key):
             file.truncate()  # Remove any trailing lines that were in the original file
     else:
         # Create .env file and write the API key
-        with open(env_file, 'w') as file:
+        with env_path.open('w') as file:
             file.write(api_key_entry)
 
-    print("API key set in .env file.")
+    print(f"API key set in {env_file_path}.")
 
 def manage_available_functions(retrieve=True, function_location=None):
     """
@@ -444,7 +451,7 @@ def single_turn_pseudofunction(testing_prompt:str, function:str, model="gpt-4-11
 #     }
 # } 
 
-# print(create_json_agent('create a function that would return the sum of two numbers'))
+print(create_json_autoagent('create a function that would return the sum of two numbers'))
 
 # print(single_turn_pseudofunction('add two numbers that would sum to 10', func))
 ##testing func end
