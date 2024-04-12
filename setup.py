@@ -20,7 +20,7 @@ setup(
         'h11==0.14.0',
         'httpcore==1.0.2',
         'httpx==0.26.0',
-        'idna==3.6',
+        'idna==3.7',
         'numpy==1.26.3',
         'openai==1.6.1',
         'pandas==2.1.4',
